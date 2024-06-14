@@ -1,0 +1,16 @@
+version: '3'
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    ports:
+      - "${PG_PORT}:${PG_PORT}"
+    volumes:
+      - c:/db/postgres/data/goit-python-web-hw13-p1:/var/lib/postgresql/data
